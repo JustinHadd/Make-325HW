@@ -3,13 +3,14 @@
 #  Compilation instructions for "employee"
 
 CC = g++
-CFLAGS = -Wall -Wextra
+CFLAGS = -c -Wall -Wextra
 TARGET = employee
 
 default: $(TARGET)
 
+# I didn't put a CFLAGS here because the required -c does not work with the -o
 employee: employee.o officer.o supervisor.o main.o
-	$(CC) $(CFLAGS) -o $(TARGET) employee.o officer.o supervisor.o main.o
+	$(CC) -Wall -Wextra -o $(TARGET) employee.o officer.o supervisor.o main.o
 
 employee.o: Employee.cpp Employee.h 
 	$(CC) $(CFLAGS) -c Employee.cpp
